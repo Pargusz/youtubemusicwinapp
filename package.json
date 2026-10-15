@@ -1,0 +1,42 @@
+{
+  "name": "youtubemusicwinapp",
+  "productName": "Tini",
+  "version": "1.1.0",
+  "description": "YouTube Music için Spotify tarzı masaüstü istemci (Windows)",
+  "author": "Pargusz",
+  "license": "MIT",
+  "type": "module",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "postinstall": "node scripts/patch-youtubei.cjs"
+  },
+  "dependencies": {
+    "youtubei.js": "18.1.0"
+  },
+  "devDependencies": {
+    "electron": "44.7.2",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.tini.music",
+    "productName": "Tini",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**",
+      "dist/**",
+      "assets/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "dir"
+      ],
+      "icon": "assets/icon.png"
+    }
+  }
+}
